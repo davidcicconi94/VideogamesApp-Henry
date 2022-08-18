@@ -1,10 +1,8 @@
 // Cargamos las variables de entorno
-require("dotenv").config();
 const { API_KEY } = process.env;
 const { Videogame, Genres } = require("../db.js");
-
 const axios = require("axios");
-// const Videogame = require("../models/Videogame");
+require("dotenv").config();
 
 // TRAER LOS 100 JUEGOS DE LA API
 const apiData = async (req, res) => {
@@ -21,7 +19,7 @@ const apiData = async (req, res) => {
       videogames.push({
         id: vg.id,
         name: vg.name,
-        description: vg.description,
+        image: vg.background_image,
         released: vg.released,
         rating: vg.rating,
         platforms: vg.platforms?.map((el) => el.platform.name),
@@ -32,7 +30,5 @@ const apiData = async (req, res) => {
   console.log(videogames.length);
   return videogames;
 };
-
-// REQUEST PARA TRAERME 100 VIDEOJUEGOS
 
 module.exports = { apiData };

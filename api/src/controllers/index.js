@@ -57,4 +57,36 @@ const dbData = async () => {
   }
 }; // Devuelve un array vacio, ya que en nuestra bdd no tenemos nada
 
+// ----------------------------------------------------------------------------------------------------------
+
+// REQUEST POR QUERY A LA API
+const apiByName = async (name) => {
+  let url = `https://api.rawg.io/api/games?search=${name}&key=bc1bb0ae62664232a0e926209f30dd87`;
+
+  try {
+    const dataSearch = await axios.get(url); // {... , data: { results: ...}} llega Objeto -> data {} -> results
+
+    let dataVgSearch = dataSearch.data.results.map((vg) => {
+      return {
+        id: vg.id,
+        name: vg.name,
+        released: vg.released,
+        image: vg.background_image,
+        rating: vg.rating,
+        platforms: vg.platforms?.map((el) => el.platform.name), // [{platfom{}}] => [""]
+        genres: vg.genres?.map((el) => el.name), // [{}] => ['']
+      };
+    });
+
+    const quince = dataVgSearch.slice(0, 15);
+
+    console.log(quince);
+    return quince; // array de objetos de los primeros 15
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+apiByName("gta");
+
 module.exports = { apiData, dbData };

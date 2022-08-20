@@ -40,13 +40,13 @@ const apiData = async () => {
 // llamado asincrono a la base de datos
 const dbData = async () => {
   try {
-    return await Videogame.findAll({
+    return Videogame.findAll({
       //SELECT * FROM Videogame
       include: [
         {
           model: Genre,
-          atributes: ["name"],
-          throught: {
+          attributes: ["name"],
+          through: {
             attributes: [],
           },
         },
@@ -56,6 +56,14 @@ const dbData = async () => {
     console.error(e);
   }
 }; // Devuelve un array vacio, ya que en nuestra bdd no tenemos nada
+
+const infoTotal = async () => {
+  let dataDB = await dbData();
+  let dataAPI = await apiData();
+
+  const completeData = dataDB.concat(dataAPI);
+  return completeData;
+};
 
 // ----------------------------------------------------------------------------------------------------------
 
@@ -79,14 +87,12 @@ const apiByName = async (name) => {
     });
 
     const quince = dataVgSearch.slice(0, 15);
-
     console.log(quince);
+
     return quince; // array de objetos de los primeros 15
   } catch (error) {
     console.log(error);
   }
 };
 
-apiByName("gta");
-
-module.exports = { apiData, dbData };
+module.exports = { apiData, dbData, apiByName, infoTotal };

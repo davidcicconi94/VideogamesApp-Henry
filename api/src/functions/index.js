@@ -3,10 +3,22 @@ const axios = require("axios");
 require("dotenv").config();
 const { Videogame, Genre } = require("../db.js");
 const { API_KEY } = process.env;
+const { totalData } = require("../controllers/index.js");
+
+/* const findGame = async (req, res) => {
+  const { name } = req.query;
+  let allVideogames = totalData();
+  console.log(allVideogames);
+
+  if (name) {
+  }
+};
+
+findGame(); */
 
 const createGame = async (req, res) => {
   try {
-    const { name, image, genres, released, rating, plataforms, description } =
+    const { name, image, genres, released, rating, platforms, description } =
       req.body;
 
     let newGame = await Videogame.create({
@@ -16,7 +28,7 @@ const createGame = async (req, res) => {
       description,
       released,
       rating,
-      plataforms,
+      platforms,
     });
 
     const relation = await Genre.findAll({
@@ -26,7 +38,7 @@ const createGame = async (req, res) => {
     });
 
     await newGame.addGenre(relation);
-    console.log(newGame);
+
     res.send(newGame);
   } catch (error) {
     console.log(error);

@@ -94,4 +94,63 @@ const apiByName = async (name) => {
   }
 };
 
-module.exports = { apiData, dbData, apiByName, infoTotal };
+// ----------------------------------------------------------------------------------------------------------
+
+// REQUEST POR PARAMS
+const idAPI = async (id) => {
+  try {
+    const resApi = await axios.get(
+      `https://api.rawg.io/api/games/${id}?key=${API_KEY}`
+    );
+
+    if (resApi) {
+      const idGame = await resApi.data;
+      const infoGame = {
+        id: idGame.id,
+        name: idGame.name,
+        image: idGame.background_image,
+        genres: idGame.genres?.map((g) => g.name),
+        description: idGame.description,
+        released: idGame.released,
+        rating: idGame.rating,
+        platforms: idGame.platforms?.map((el) => el.platform.name),
+      };
+      return infoGame;
+    } else {
+      return "No game founded";
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const idDB = async (id) => {
+  try {
+    return await Videogame.findByPk(id, {
+      include: [
+        {
+          model: Genre,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+        },
+      ],
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const videogame = async (id) => {
+  // si el id contiene un signo - significa que lo creó el usuario, por ende lo vamos a buscar a la bdd
+  if (id.includes("-")) {
+    const vgDB = await idDB(id);
+    return vgDB;
+  } else {
+    const vgAPI = await idAPI(id);
+    return vgAPI;
+  }
+};
+
+module.exports = { apiData, dbData, apiByName, infoTotal, videogame };

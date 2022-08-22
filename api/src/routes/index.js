@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { apiData, dbData, apiByName, infoTotal } = require("../controllers");
-const { createGame } = require("../functions/index.js");
+const { createGame, gamesById } = require("../functions/index.js");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -32,6 +32,8 @@ router.get("/videogames", async (req, res, next) => {
     return;
   }
 });
+
+router.get("/videogames/:id", gamesById);
 
 router.post("/videogames", createGame);
 

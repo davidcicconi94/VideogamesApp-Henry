@@ -3,18 +3,7 @@ const axios = require("axios");
 require("dotenv").config();
 const { Videogame, Genre } = require("../db.js");
 const { API_KEY } = process.env;
-const { totalData } = require("../controllers/index.js");
-
-/* const findGame = async (req, res) => {
-  const { name } = req.query;
-  let allVideogames = totalData();
-  console.log(allVideogames);
-
-  if (name) {
-  }
-};
-
-findGame(); */
+const { totalData, videogame } = require("../controllers/index.js");
 
 const createGame = async (req, res) => {
   try {
@@ -45,4 +34,14 @@ const createGame = async (req, res) => {
   }
 };
 
-module.exports = { createGame };
+const gamesById = async (req, res) => {
+  const { id } = req.params;
+  let dataGame = await videogame(id);
+  try {
+    dataGame ? res.send(dataGame) : res.status(404).send("Game id not found");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+module.exports = { createGame, gamesById };

@@ -13,21 +13,19 @@ router.get("/videogames", async (req, res, next) => {
   const { name } = req.query;
   let allVideogames = await infoTotal();
   console.log(name);
-
   if (name) {
     try {
-      const gamesByNameAPI = await apiByName(name);
+      const foundGamesAPI = await apiByName(name);
       const gamesByNameDB = await dbData();
-
-      let foundGameDB = gamesByNameDB.filter((element) =>
-        element.name.toLowerCase().includes(name.toLowerCase())
+      let foundGamesDB = gamesByNameDB.filter((el) =>
+        el.name.toLowerCase().includes(name.toLowerCase())
       );
-      let allResults = foundGameDB.concat(gamesByNameAPI);
+      let allResults = foundGamesDB.concat(foundGamesAPI);
       allResults.length
-        ? res.status(200).send(allResults)
-        : res.status(400).send("No existe juego con dicho nombre");
-    } catch (error) {
-      next(error);
+        ? res.status(200).send(allResults.slice(0, 15))
+        : res.status(400).send("No hay un videojuego con dicho nombre");
+    } catch (err) {
+      next(err);
     }
   } else {
     res.send(allVideogames);

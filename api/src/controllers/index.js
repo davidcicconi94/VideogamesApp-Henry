@@ -87,7 +87,6 @@ const apiByName = async (name) => {
     });
 
     const quince = dataVgSearch.slice(0, 15);
-    console.log(quince);
 
     return quince; // array de objetos de los primeros 15
   } catch (error) {

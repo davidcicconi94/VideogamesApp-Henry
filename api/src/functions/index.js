@@ -44,4 +44,28 @@ const gamesById = async (req, res) => {
   }
 };
 
-module.exports = { createGame, gamesById };
+const getGenres = async (req, res) => {
+  const url = `https://api.rawg.io/api/genres?key=${API_KEY}`;
+
+  try {
+    const response = await axios.get(url);
+    const arrGenr = response.data.results;
+
+    const apiGenres = arrGenr.map((el) => el.name); // ['action' , 'indie' , etc]
+    console.log("Estos son los Genres de la API:", apiGenres);
+
+    // Guardo los genres que traje de la API a la base de datos
+    apiGenres.map((el) =>
+      Genre.findOrCreate({
+        where: { name: el },
+      })
+    );
+
+    const getAllGenresDB = await Genre.findAll();
+    res.json(getAllGenresDB);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+module.exports = { createGame, gamesById, getGenres };

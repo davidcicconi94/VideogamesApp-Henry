@@ -1,12 +1,15 @@
 import React from "react";
 
-const Card = ({ id, name, img, rating }) => {
+const Card = ({ id, name, img, rating, genres }) => {
   return (
-    <ul key={id}>
-      <li> {name} </li>
-      <li> {rating} </li>
-      <img src={img} alt="" width="400px" height="300px" />
-    </ul>
+    <div className="card">
+      <ul key={id}>
+        <h3> {name} </h3>
+        <img src={img} alt="" width="400px" height="300px" />
+        <p>⭐ {rating} </p>
+        <p> {genres} </p>
+      </ul>
+    </div>
   );
 };
 

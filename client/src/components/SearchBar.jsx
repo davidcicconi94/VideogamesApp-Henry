@@ -14,15 +14,16 @@ const SearchBar = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(getByName(input));
+    setInput("");
   };
 
   return (
     <div>
-      <form onSubmit={(e) => onSubmit(e)}>
+      <form onSubmit={onSubmit}>
         <input
           type="text"
           placeholder="Videogame..."
-          onChange={(e) => onChange(e)}
+          onChange={onChange}
           value={input}
         />
         <button type="submit">Search</button>

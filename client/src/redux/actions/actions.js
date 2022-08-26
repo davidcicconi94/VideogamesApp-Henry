@@ -21,9 +21,9 @@ export const getAllVideogames = () => {
 export const getByName = (name) => {
   return async function (dispatch) {
     try {
-      let url = `http://localhost:3001/videogames?name=${name}`;
+      let url = "http://localhost:3001/videogames?name=" + name;
 
-      const { data } = axios.get(url);
+      const { data } = await axios.get(url);
 
       return dispatch({
         type: GET_BY_NAME,

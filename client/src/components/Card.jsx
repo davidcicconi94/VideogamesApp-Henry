@@ -8,6 +8,7 @@ const Card = ({ id, name, img, rating, genres }) => {
         <img src={img} alt="" width="400px" height="300px" />
         <p>⭐ {rating} </p>
         <p> {genres} </p>
+        <button> Details </button>
       </ul>
     </div>
   );

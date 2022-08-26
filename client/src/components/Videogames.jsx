@@ -21,7 +21,7 @@ const Videogames = () => {
           rating={rating}
           genres={genres
             ?.map((e) => (typeof e === "object" ? e.name : e))
-            .join(" - ")}
+            .join(", ")}
         />
       ))}
     </div>

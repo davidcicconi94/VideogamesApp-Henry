@@ -2,14 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllVideogames } from "../redux/actions/actions";
 import Card from "./Card";
+import Loading from "./Loading";
 import Pagination from "./Pagination";
 
 const Videogames = ({ currentGames }) => {
   let dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getAllVideogames());
+    dispatch(getAllVideogames()).then(() => setLoading(false));
   }, [dispatch]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div>

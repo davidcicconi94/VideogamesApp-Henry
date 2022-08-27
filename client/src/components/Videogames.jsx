@@ -9,7 +9,7 @@ const Videogames = () => {
 
   useEffect(() => {
     dispatch(getAllVideogames());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>

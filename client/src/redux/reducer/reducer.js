@@ -1,5 +1,15 @@
-import { GET_ALL_VIDEOGAMES, GET_BY_NAME, ORDER_BY } from "../actions/actions";
-import { ASCENDENT, DESCENDENT } from "../../constant/order";
+import {
+  GET_ALL_VIDEOGAMES,
+  GET_BY_NAME,
+  ORDER_BY,
+  GET_BY_GENRES,
+} from "../actions/actions";
+import {
+  ASCENDENT,
+  DESCENDENT,
+  DESCENDENT_RAT,
+  ASCENDENT_RAT,
+} from "../../constant/order";
 
 const initialState = {
   videogames: [],
@@ -19,26 +29,64 @@ const reducerFunction = (state = initialState, action) => {
     case GET_BY_NAME:
       return {
         ...state,
-        filteredVideogames: action.payload,
+        videogames: action.payload,
       };
 
     case ORDER_BY:
-      let orderedGames = [...state.videogames];
-      orderedGames = orderedGames.sort((a, b) => {
-        if (a.name > b.name) {
-          return action.payload === ASCENDENT ? 1 : -1;
-        }
-        if (a.name < b.name) {
-          return action.payload === ASCENDENT ? -1 : 1;
-        }
-        return 0;
-      });
+      let vgCopy = [...state.videogames];
+      let order;
+
+      switch (action.payload) {
+        case ASCENDENT:
+          order = vgCopy.sort((a, b) => {
+            if (a.name.toLowerCase() > b.name.toLowerCase()) {
+              return 1;
+            }
+            if (a.name.toLowerCase() < b.name.toLowerCase()) {
+              return -1;
+            }
+            return 0;
+          });
+          break;
+
+        case DESCENDENT:
+          order = vgCopy.sort(function (a, b) {
+            if (a.name.toLowerCase() < b.name.toLowerCase()) {
+              return 1;
+            }
+            if (a.name.toLowerCase() > b.name.toLowerCase()) {
+              return -1;
+            }
+            return 0;
+          });
+          break;
+
+        case ASCENDENT_RAT:
+          order = vgCopy.sort(function (a, b) {
+            return a.rating - b.rating;
+          });
+          break;
+        case DESCENDENT_RAT:
+          order = vgCopy.sort(function (a, b) {
+            return b.rating - a.rating;
+          });
+          break;
+
+        default:
+          order = vgCopy;
+          break;
+      }
 
       return {
         ...state,
-        videogames: orderedGames,
+        videogames: order,
       };
 
+    case GET_BY_GENRES:
+      return {
+        ...state,
+        genres: action.payload,
+      };
     default:
       return state;
   }

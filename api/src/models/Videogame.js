@@ -36,5 +36,3 @@ module.exports = (sequelize) => {
     },
   });
 };
-
-// PRUEBA

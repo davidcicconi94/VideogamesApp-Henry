@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ASCENDENT, DESCENDENT } from "../constant/order";
-import { getAllVideogames, orderBy } from "../redux/actions/actions";
+import {
+  ASCENDENT,
+  DESCENDENT,
+  ASCENDENT_RAT,
+  DESCENDENT_RAT,
+} from "../constant/order";
+import {
+  getbyGenres,
+  getAllVideogames,
+  orderBy,
+} from "../redux/actions/actions";
 
 const Order = () => {
   const genres = useSelector((state) => state.genres);
   const dispatch = useDispatch();
   console.log(genres);
 
+  useEffect(() => {
+    dispatch(getbyGenres());
+  }, [dispatch]);
+
   const selectChange = (e) => {
     dispatch(orderBy(e.target.value));
   };
+
+  function handleFilter(e) {
+    e.preventDefault();
+    if (e.target.value === "") {
+      dispatch(getAllVideogames());
+    } else {
+      dispatch(getbyGenres());
+    }
+  }
 
   return (
     // ORDENAR
@@ -22,19 +44,24 @@ const Order = () => {
         <option value={ASCENDENT}>A-Z</option>
         <option value={DESCENDENT}>Z-A</option>
 
-        <option value="asc"> + Rating </option>
-        <option value="desc"> - Rating </option>
+        <option value={ASCENDENT_RAT}> - Rating </option>
+        <option value={DESCENDENT_RAT}> + Rating </option>
       </select>
       <select name="">
         <option disabled selected value>
           -- Filter by --
         </option>
-        <option value="genre">Genre</option>
+      </select>
+
+      <select id="genre" onChange={handleFilter}>
+        <option disabled selected value>
+          -- Genres --
+        </option>
         {genres &&
-          genres.map((gen) => {
+          genres.map((g) => {
             return (
-              <option key={gen.id} value={gen.name}>
-                {gen.name}
+              <option key={g.id} value={g.name}>
+                {g.name}
               </option>
             );
           })}

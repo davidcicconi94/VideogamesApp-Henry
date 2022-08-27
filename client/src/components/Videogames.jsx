@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllVideogames } from "../redux/actions/actions";
 import Card from "./Card";
+import Pagination from "./Pagination";
 
-const Videogames = () => {
+const Videogames = ({ currentGames }) => {
   let dispatch = useDispatch();
-  let videogames = useSelector((state) => state.videogames);
 
   useEffect(() => {
     dispatch(getAllVideogames());
@@ -13,17 +13,19 @@ const Videogames = () => {
 
   return (
     <div>
-      {videogames.map(({ name, image, id, rating, genres }) => (
-        <Card
-          id={id}
-          name={name}
-          img={image}
-          rating={rating}
-          genres={genres
-            ?.map((e) => (typeof e === "object" ? e.name : e))
-            .join(", ")}
-        />
-      ))}
+      {currentGames.length > 0
+        ? currentGames.map(({ name, image, id, rating, genres }) => (
+            <Card
+              id={id}
+              name={name}
+              img={image}
+              rating={rating}
+              genres={genres
+                ?.map((e) => (typeof e === "object" ? e.name : e))
+                .join(", ")}
+            />
+          ))
+        : console.log("error")}
     </div>
   );
 };

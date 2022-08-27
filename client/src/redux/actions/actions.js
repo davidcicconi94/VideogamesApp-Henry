@@ -61,3 +61,10 @@ export const getbyGenres = () => {
     }
   };
 };
+
+export const filterByGenre = (genre) => {
+  return {
+    type: FILTER_BY_GENRES,
+    payload: genre,
+  };
+};

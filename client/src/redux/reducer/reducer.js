@@ -3,6 +3,7 @@ import {
   GET_BY_NAME,
   ORDER_BY,
   GET_BY_GENRES,
+  FILTER_BY_GENRES,
 } from "../actions/actions";
 import {
   ASCENDENT,
@@ -87,6 +88,28 @@ const reducerFunction = (state = initialState, action) => {
         ...state,
         genres: action.payload,
       };
+
+    case FILTER_BY_GENRES:
+      let aux = [];
+      if (action.payload) {
+        aux = state.videogames.filter((e) => {
+          if (e.genres.length === 0) {
+            return e.genres;
+          } else if (e.genres.some((e) => e.name === action.payload)) {
+            return e.genres.map((el) => el.name);
+          } else {
+            return e.genres.includes(action.payload);
+          }
+        });
+      } else {
+        aux = state.videogames;
+      }
+
+      return {
+        ...state,
+        videogames: aux,
+      };
+
     default:
       return state;
   }

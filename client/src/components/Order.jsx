@@ -10,6 +10,7 @@ import {
   getbyGenres,
   getAllVideogames,
   orderBy,
+  filterByGenre,
 } from "../redux/actions/actions";
 
 const Order = () => {
@@ -26,11 +27,12 @@ const Order = () => {
   };
 
   function handleFilter(e) {
+    console.log(e.target.value);
     e.preventDefault();
     if (e.target.value === "") {
       dispatch(getAllVideogames());
     } else {
-      dispatch(getbyGenres());
+      dispatch(filterByGenre(e.target.value));
     }
   }
 
@@ -53,7 +55,7 @@ const Order = () => {
         </option>
       </select>
 
-      <select id="genre" onChange={handleFilter}>
+      <select onChange={handleFilter}>
         <option disabled selected value>
           -- Genres --
         </option>

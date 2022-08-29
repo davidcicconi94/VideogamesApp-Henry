@@ -1,0 +1,11 @@
+.pagination span button {
+    background-color: #e7d25c;
+    color: black;
+    padding: 4px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.pagination {
+    padding: 20px;
+}

@@ -8,15 +8,16 @@ import {
 } from "../constant/order";
 import {
   getbyGenres,
-  getAllVideogames,
+  getvideogames,
   orderBy,
   filterByGenre,
+  filterByOrigin,
 } from "../redux/actions/actions";
 
 const Order = () => {
   const genres = useSelector((state) => state.genres);
+  const allGames = useSelector((state) => state.videogames);
   const dispatch = useDispatch();
-  console.log(genres);
 
   useEffect(() => {
     dispatch(getbyGenres());
@@ -27,12 +28,21 @@ const Order = () => {
   };
 
   function handleFilter(e) {
-    console.log(e.target.value);
     e.preventDefault();
     if (e.target.value === "") {
-      dispatch(getAllVideogames());
+      dispatch(getvideogames());
     } else {
       dispatch(filterByGenre(e.target.value));
+    }
+  }
+
+  function handleOrigin(e) {
+    e.preventDefault();
+
+    if (e.target.value === "") {
+      dispatch(getvideogames());
+    } else {
+      dispatch(filterByOrigin(e.target.value));
     }
   }
 
@@ -49,10 +59,12 @@ const Order = () => {
         <option value={ASCENDENT_RAT}> - Rating </option>
         <option value={DESCENDENT_RAT}> + Rating </option>
       </select>
-      <select name="">
+      <select name="" onChange={handleOrigin}>
         <option disabled selected value>
           -- Filter by --
         </option>
+        <option value="rawg"> Rawg Games</option>
+        <option value="myGames"> My Games</option>
       </select>
 
       <select onChange={handleFilter}>

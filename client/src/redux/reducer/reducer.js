@@ -7,6 +7,7 @@ import {
   GET_VIDEOGAME,
   GET_PLATFORMS,
   CREATE_GAME,
+  FILTER_BY_ORIGIN,
 } from "../actions/actions";
 import {
   ASCENDENT,
@@ -17,8 +18,8 @@ import {
 
 const initialState = {
   videogames: [],
+  allVideogames: [],
   videogame: [],
-  filteredVideogames: [],
   genres: [],
   platforms: [],
 };
@@ -29,17 +30,17 @@ const reducerFunction = (state = initialState, action) => {
       return {
         ...state,
         videogames: action.payload,
-        filteredVideogames: action.payload,
+        allVideogames: action.payload,
       };
 
     case GET_BY_NAME:
       return {
         ...state,
-        videogames: action.payload,
+        allVideogames: action.payload,
       };
 
     case ORDER_BY:
-      let vgCopy = [...state.videogames];
+      let vgCopy = [...state.allVideogames];
       let order;
 
       switch (action.payload) {
@@ -85,6 +86,7 @@ const reducerFunction = (state = initialState, action) => {
 
       return {
         ...state,
+        allVideogames: order,
         videogames: order,
       };
 
@@ -112,7 +114,30 @@ const reducerFunction = (state = initialState, action) => {
 
       return {
         ...state,
-        videogames: aux,
+        allVideogames: aux,
+      };
+
+    case FILTER_BY_ORIGIN:
+      let allGames = state.videogames;
+      let filter = [];
+
+      switch (action.payload) {
+        case "rawg":
+          filter = allGames.filter((el) => typeof el.id === "number");
+          break;
+
+        case "myGames":
+          filter = allGames.filter((el) => isNaN(el.id));
+          break;
+
+        default:
+          filter = allGames;
+          break;
+      }
+
+      return {
+        ...state,
+        allVideogames: filter,
       };
 
     case GET_VIDEOGAME:
@@ -133,7 +158,9 @@ const reducerFunction = (state = initialState, action) => {
       };
 
     default:
-      return state;
+      return {
+        ...state,
+      };
   }
 };
 

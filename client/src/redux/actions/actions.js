@@ -9,8 +9,9 @@ export const FILTER_BY_GENRES = "FILTER_BY_GENRES";
 export const GET_VIDEOGAME = "GET_VIDEOGAME";
 export const GET_PLATFORMS = "GET_PLATFORMS";
 export const CREATE_GAME = "CREATE_GAME";
+export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
 
-export const getAllVideogames = () => {
+export const getvideogames = () => {
   return async function (dispatch) {
     try {
       let url = "http://localhost:3001/videogames";
@@ -69,6 +70,13 @@ export const filterByGenre = (genre) => {
   return {
     type: FILTER_BY_GENRES,
     payload: genre,
+  };
+};
+
+export const filterByOrigin = (origin) => {
+  return {
+    type: FILTER_BY_ORIGIN,
+    payload: origin,
   };
 };
 

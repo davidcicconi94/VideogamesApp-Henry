@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Pagination.style.css";
 
 const Pagination = ({ videogames, pagination, gamesPerPage }) => {
   const pageNumber = [];
@@ -9,7 +10,7 @@ const Pagination = ({ videogames, pagination, gamesPerPage }) => {
   }
 
   return (
-    <div>
+    <div className="pagination">
       {pageNumber &&
         pageNumber.map(
           (

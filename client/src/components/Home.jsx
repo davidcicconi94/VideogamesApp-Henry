@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import Navbar from "./Navbar";
 import Order from "./Order";
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
 import Videogames from "./Videogames";
 
 const Home = () => {
-  let videogames = useSelector((state) => state.videogames);
+  let videogames = useSelector((state) => state.allVideogames);
 
   // Paginación
-  const [currentPage, setCurrentPage] = useState(1); //lo seteo en 1 porque siempre arranco por la primer pagina
-  const gamesPerPage = 15; //cantidad de juegos que debe haber por pagina
-  const indexOfLastGame = currentPage * gamesPerPage; // 1 * 15 = 15
-  const indexOfFirstGame = indexOfLastGame - gamesPerPage; // 15 - 15 = 0
-  const currentGames = videogames.slice(indexOfFirstGame, indexOfLastGame); //para dividir la cantidad de juegos por pagina
+  const [currentPage, setCurrentPage] = useState(1);
+  const gamesPerPage = 15;
+  const indexOfLastGame = currentPage * gamesPerPage;
+  const indexOfFirstGame = indexOfLastGame - gamesPerPage;
+  const currentGames = videogames.slice(indexOfFirstGame, indexOfLastGame);
 
   const pagination = (pageNumb) => {
     setCurrentPage(pageNumb);
   };
   return (
     <div>
-      <SearchBar />
+      <Navbar />
       <Order />
       <Pagination
         pagination={pagination}

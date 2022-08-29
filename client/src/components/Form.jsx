@@ -6,6 +6,7 @@ import {
   getbyGenres,
   getPlatforms,
 } from "../redux/actions/actions";
+import "../styles/Form.style.css";
 
 function validate(input) {
   let errors = {};
@@ -118,7 +119,9 @@ const Form = () => {
     e.preventDefault();
     let noRepeat = allGames.filter((game) => game.name === input.name);
     if (noRepeat.length !== 0) {
-      alert("Ya existe un juego con ese nombre, por favor elija otro");
+      alert(
+        "There is already a game with that name, please choose another one."
+      );
     } else {
       let error = Object.keys(validate(input));
       if (
@@ -126,7 +129,7 @@ const Form = () => {
         !input.genres.length ||
         !input.platforms.length
       ) {
-        alert("Llene los campos correctamente");
+        alert("Please, fill in the fields correctly");
         return;
       } else {
         dispatch(createGame(input));
@@ -139,20 +142,17 @@ const Form = () => {
           genres: [],
           platforms: [],
         });
-        alert("Felicidades, el juego fue creado exitosamente.");
+        alert("Congratulations, the game was successfully created.");
       }
       navigate("/home");
     }
   }
 
   return (
-    <div>
-      <div className="title">
-        <h2>Create your game!</h2>
-      </div>
+    <div className="box">
       <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <label>Name:</label>
+        <span className="title">Create your game!</span>
+        <div className="input-container">
           <input
             value={input.name}
             type="text"
@@ -160,46 +160,44 @@ const Form = () => {
             name="name"
             onChange={handleChange}
             autoComplete="off"
+            placeholder="Name"
           />
           {errors.name && <p>{errors.name}</p>}
         </div>
 
-        <div>
-          <label>Image URL:</label>
+        <div className="input-container">
           <input
             type="text"
             name="image"
             required
             value={input.image}
             onChange={handleChange}
+            placeholder="Image URL:"
           />
           {errors.image && <p>{errors.image}</p>}
         </div>
 
-        <div>
-          <label>Release date:</label>
+        <div className="input-container">
           <input type="date" name="released" onChange={handleChange} />
           {errors.released && <p> {errors.released} </p>}
         </div>
 
-        <div>
-          <label>Rating:</label>
+        <div className="input-container">
           <input
             type="number"
-            placeholder="0-5"
             required
             name="rating"
             onChange={handleChange}
             value={input.rating}
+            placeholder="Rating"
           />
           {errors.rating && <p>{errors.rating}</p>}
         </div>
 
-        <div>
-          <label>Genres:</label>
+        <div className="input-container">
           <select name="genres" onChange={(e) => handleGenres(e)}>
             <option disabled selected>
-              ---
+              Genres
             </option>
             {genres.map((gen) => {
               return (
@@ -223,15 +221,14 @@ const Form = () => {
           ))}
         </div>
 
-        <div>
-          <label>Platforms:</label>
+        <div className="input-container">
           <select
             name="platforms"
             id="platforms"
             onChange={(e) => handlePlat(e)}
           >
             <option disabled selected>
-              ---
+              Platforms
             </option>
             {platforms.map((plat) => {
               return (
@@ -251,7 +248,7 @@ const Form = () => {
           ))}
         </div>
 
-        <div>
+        <div className="input-container">
           <textarea
             placeholder="Description..."
             required
@@ -264,8 +261,12 @@ const Form = () => {
         </div>
 
         <div>
-          <button type="submit">Create Game</button>
-          <button>Back</button>
+          <button className="btn" type="submit">
+            Create Game
+          </button>
+          <button className="btn" onClick={() => navigate(-1)}>
+            Back
+          </button>
         </div>
       </form>
     </div>

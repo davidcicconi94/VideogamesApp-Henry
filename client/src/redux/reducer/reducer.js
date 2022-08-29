@@ -6,6 +6,7 @@ import {
   FILTER_BY_GENRES,
   GET_VIDEOGAME,
   GET_PLATFORMS,
+  CREATE_GAME,
 } from "../actions/actions";
 import {
   ASCENDENT,
@@ -124,6 +125,11 @@ const reducerFunction = (state = initialState, action) => {
       return {
         ...state,
         platforms: [...action.payload],
+      };
+
+    case CREATE_GAME:
+      return {
+        ...state,
       };
 
     default:

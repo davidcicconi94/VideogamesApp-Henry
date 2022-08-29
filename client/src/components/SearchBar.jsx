@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getByName } from "../redux/actions/actions";
+import { Link, useNavigate } from "react-router-dom";
+import Form from "./Form";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -27,6 +29,11 @@ const SearchBar = () => {
           value={input}
         />
         <button type="submit">Search</button>
+        <span>
+          <Link to="/create">
+            <button>Create Game</button>
+          </Link>
+        </span>
       </form>
     </div>
   );

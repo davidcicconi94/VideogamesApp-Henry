@@ -7,6 +7,7 @@ export const ORDER_BY_RATING = "ORDER_BY_RATING";
 export const GET_BY_GENRES = "GET_BY_GENRES";
 export const FILTER_BY_GENRES = "FILTER_BY_GENRES";
 export const GET_VIDEOGAME = "GET_VIDEOGAME";
+export const GET_PLATFORMS = "GET_PLATFORMS";
 
 export const getAllVideogames = () => {
   return async function (dispatch) {
@@ -83,5 +84,17 @@ export const getVgDetail = (id) => {
     } catch (error) {
       console.error(error);
     }
+  };
+};
+
+export const getPlatforms = () => {
+  return async (dispatch) => {
+    const url = await axios.get("http://localhost:3001/platforms");
+    console.log(url);
+
+    return dispatch({
+      type: GET_PLATFORMS,
+      payload: url.data,
+    });
   };
 };

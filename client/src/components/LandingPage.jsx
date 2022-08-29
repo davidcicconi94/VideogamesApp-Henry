@@ -4,7 +4,7 @@ import stl from "../styles/LandingPage.style.css";
 
 const LandingPage = () => {
   return (
-    <div style={stl.landing}>
+    <div>
       <h1>Henry Videogames</h1>
       <h3>Landing</h3>
 

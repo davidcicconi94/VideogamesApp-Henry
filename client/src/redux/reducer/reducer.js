@@ -5,6 +5,7 @@ import {
   GET_BY_GENRES,
   FILTER_BY_GENRES,
   GET_VIDEOGAME,
+  GET_PLATFORMS,
 } from "../actions/actions";
 import {
   ASCENDENT,
@@ -18,6 +19,7 @@ const initialState = {
   videogame: [],
   filteredVideogames: [],
   genres: [],
+  platforms: [],
 };
 
 const reducerFunction = (state = initialState, action) => {
@@ -116,6 +118,12 @@ const reducerFunction = (state = initialState, action) => {
       return {
         ...state,
         videogame: action.payload,
+      };
+
+    case GET_PLATFORMS:
+      return {
+        ...state,
+        platforms: [...action.payload],
       };
 
     default:

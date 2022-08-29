@@ -1,6 +1,12 @@
 const { Router } = require("express");
 const { apiData, dbData, apiByName, infoTotal } = require("../controllers");
-const { createGame, gamesById, getGenres } = require("../functions/index.js");
+const {
+  createGame,
+  gamesById,
+  getGenres,
+  getPlatforms,
+} = require("../functions/index.js");
+
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -38,5 +44,7 @@ router.get("/videogames/:id", gamesById);
 router.post("/videogames", createGame);
 
 router.get("/genres", getGenres);
+
+router.get("/platforms", getPlatforms);
 
 module.exports = router;

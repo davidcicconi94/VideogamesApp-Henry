@@ -30,7 +30,6 @@ function App() {
         <Route exact path={"/"} element={<LandingPage />} />
         <Route exact path={"/home"} element={<Home />} />
         <Route exact path={"/create"} element={<Form />} />
-        <Route exact path={"/create"} element={<Form />} />
         <Route exact path={"/details/:id"} element={<Details />} />
       </Routes>
     </div>

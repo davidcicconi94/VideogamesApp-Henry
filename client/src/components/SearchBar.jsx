@@ -32,30 +32,30 @@ const SearchBar = () => {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <div>
+        <div className="right-buttons">
           <input
             type="text"
-            class="form__field"
             placeholder="Videogame..."
             onChange={onChange}
             value={input}
             name="name"
+            autoComplete="off"
           />
           <button type="submit" className="button">
             Search
           </button>
-        </div>
-        <div className="create-refresh-buttons">
-          <span>
-            <Link to="/create">
-              <button className="button">Create Game</button>
-            </Link>
-          </span>
-          <span>
-            <button onClick={handleRefresh} className="button">
-              Refresh
-            </button>
-          </span>
+          <div className="span">
+            <span>
+              <Link to="/create">
+                <button className="button">Create Game</button>
+              </Link>
+            </span>
+            <span>
+              <button onClick={handleRefresh} className="button">
+                Refresh
+              </button>
+            </span>
+          </div>
         </div>
       </form>
     </div>

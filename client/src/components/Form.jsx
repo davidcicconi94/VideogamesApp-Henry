@@ -152,7 +152,7 @@ const Form = () => {
     <div className="form-full">
       <div className="box">
         <form onSubmit={(e) => handleSubmit(e)}>
-          <span className="title">Create your game!</span>
+          <span className="title-form">Create your game!</span>
           <div className="input-container">
             <input
               value={input.name}

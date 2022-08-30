@@ -60,6 +60,10 @@
     box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
     transform: translate(2px, 2px);
   }
+
+  .img-details {
+    border: 2px solid white;
+  }
   
   @media (min-width: 768px) {
     .button-2 {

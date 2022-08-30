@@ -10,7 +10,7 @@ const LandingPage = () => {
     <div className="full">
       <div className="all">
         <div className="content">
-          <h1 className="title">Videogames APP - By David Cicconi</h1>
+          <h1 className="my-title">Videogames APP - By David Cicconi</h1>
           <Link to="/home">
             <button className="btn">
               <span> START </span>

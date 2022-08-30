@@ -1,0 +1,13 @@
+.pagination span button {
+    background-color: #ceb942;
+    color: #fff;
+    margin: 5px;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.pagination {
+    padding: 20px;
+}

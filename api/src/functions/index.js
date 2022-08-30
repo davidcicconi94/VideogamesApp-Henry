@@ -3,7 +3,7 @@ const axios = require("axios");
 require("dotenv").config();
 const { Videogame, Genre } = require("../db.js");
 const { API_KEY } = process.env;
-const { totalData, videogame } = require("../controllers/index.js");
+const { totalData, videogame, apiData } = require("../controllers/index.js");
 
 const createGame = async (req, res) => {
   try {
@@ -68,4 +68,24 @@ const getGenres = async (req, res) => {
   }
 };
 
-module.exports = { createGame, gamesById, getGenres };
+const getPlatforms = async (req, res) => {
+  try {
+    const allGames = await apiData();
+    const platforms = [];
+
+    allGames.map((vg) =>
+      vg.platforms.map((plat) => {
+        if (!platforms.includes(plat)) {
+          platforms.push(plat);
+          console.log(platforms);
+        }
+      })
+    );
+
+    platforms.length
+      ? res.status(200).json(platforms)
+      : res.status(404).send("Error");
+  } catch (error) {}
+};
+
+module.exports = { createGame, gamesById, getGenres, getPlatforms };

@@ -22,7 +22,6 @@ const Details = () => {
 
   const handleClick = () => {
     navigate(-1);
-    videogame = [];
   };
 
   if (loading) {

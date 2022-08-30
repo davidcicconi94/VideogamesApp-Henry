@@ -10,6 +10,7 @@ import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
 import Form from "./components/Form";
 import Details from "./components/Details";
+import NotFound from "./components/NotFound";
 
 function App() {
   // let videogames = useSelector((state) => state.videogames);
@@ -31,6 +32,7 @@ function App() {
         <Route exact path={"/home"} element={<Home />} />
         <Route exact path={"/create"} element={<Form />} />
         <Route exact path={"/details/:id"} element={<Details />} />
+        <Route path={"*"} element={<NotFound />} />
       </Routes>
     </div>
   );

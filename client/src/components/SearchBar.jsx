@@ -32,7 +32,7 @@ const SearchBar = () => {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <div className="form__group field">
+        <div>
           <input
             type="text"
             class="form__field"

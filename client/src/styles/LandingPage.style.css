@@ -21,5 +21,20 @@ html, body {
 
 }
 
+.links {
+    position: relative;
+    height: 10px;
+    width: 10px;
+    display: flex;
+    margin-bottom: -200px;
+    padding: 15px;
+  }
+
+  .icon img{
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+}
+
 
 

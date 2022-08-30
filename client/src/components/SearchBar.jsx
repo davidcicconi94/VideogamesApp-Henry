@@ -33,7 +33,6 @@ const SearchBar = () => {
     <div>
       <form onSubmit={onSubmit}>
         <div className="form__group field">
-          <label for="videogame">Videogame</label>
           <input
             type="text"
             class="form__field"
@@ -46,16 +45,18 @@ const SearchBar = () => {
             Search
           </button>
         </div>
-        <span>
-          <Link to="/create">
-            <button className="button">Create Game</button>
-          </Link>
-        </span>
-        <span>
-          <button onClick={handleRefresh} className="button">
-            Refresh
-          </button>
-        </span>
+        <div className="create-refresh-buttons">
+          <span>
+            <Link to="/create">
+              <button className="button">Create Game</button>
+            </Link>
+          </span>
+          <span>
+            <button onClick={handleRefresh} className="button">
+              Refresh
+            </button>
+          </span>
+        </div>
       </form>
     </div>
   );

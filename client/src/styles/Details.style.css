@@ -1,16 +1,28 @@
 /* CSS */
+.details-all {
+  color: #fff;
+  padding: 90px;
+}
+
+.released {
+  padding: 15px;
+}
+
+.description {
+  padding: 50px;
+}
+
 .button-2 {
     appearance: button;
     background-color: #000;
     background-image: none;
     border: 1px solid #000;
     border-radius: 4px;
-    box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+    box-shadow: rgb(70, 67, 67) 4px 4px 0 0,#000 4px 4px 0 1px;
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    font-family: ITCAvantGardeStd-Bk,Arial,sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;

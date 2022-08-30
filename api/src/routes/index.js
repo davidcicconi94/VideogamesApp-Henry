@@ -17,7 +17,7 @@ const router = Router();
 router.get("/videogames", async (req, res, next) => {
   // GUARDO LOS DATOS DE LO QUE HAY EN TODA LA API
   const { name } = req.query;
-  let allVideogames = await infoTotal();
+  let videogames = await infoTotal();
   console.log(name);
   if (name) {
     try {
@@ -34,7 +34,7 @@ router.get("/videogames", async (req, res, next) => {
       next(err);
     }
   } else {
-    res.send(allVideogames);
+    res.send(videogames);
     return;
   }
 });

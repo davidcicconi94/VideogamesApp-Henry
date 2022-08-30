@@ -6,7 +6,7 @@ const Card = ({ id, name, img, rating, genres }) => {
   return (
     <div className="card">
       <ul key={id}>
-        <h3> {name} </h3>
+        <h3 className="title-card"> {name} </h3>
         <div className="imgVg">
           <img src={img} alt="" width="400px" height="300px" />
         </div>

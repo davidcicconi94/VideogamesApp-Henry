@@ -30,12 +30,15 @@ const Details = () => {
   }
 
   return (
-    <div>
-      <h3> {videogame.name} </h3>
-      <p>📅 {videogame.released} </p>
+    <div className="details-all">
+      <h2> {videogame.name} </h2>
+      <p className="released">📅 {videogame.released} </p>
       <img src={videogame.image} alt="" height="400px" />
-      <p> {videogame.description?.replace(regex, "").replace("&#39", "")} </p>
-      <h4>🎮 {videogame.platforms?.join(" - ")} </h4>
+      <p className="description">
+        {" "}
+        {videogame.description?.replace(regex, "").replace("&#39", "")}{" "}
+      </p>
+      <h3>🎮 {videogame.platforms?.join(" - ")} </h3>
       <button className="button-2" onClick={handleClick}>
         Back
       </button>

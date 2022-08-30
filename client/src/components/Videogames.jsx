@@ -17,7 +17,7 @@ const Videogames = ({ currentGames }) => {
   }
 
   return (
-    <div>
+    <div className="body-cards">
       {currentGames.length > 0
         ? currentGames?.map(({ name, image, id, rating, genres }) => (
             <Card

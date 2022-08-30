@@ -13,6 +13,7 @@ import {
   filterByGenre,
   filterByOrigin,
 } from "../redux/actions/actions";
+import "../styles/Order.style.css";
 
 const Order = () => {
   const genres = useSelector((state) => state.genres);
@@ -48,7 +49,7 @@ const Order = () => {
 
   return (
     // ORDENAR
-    <div>
+    <div className="selects-order">
       <select name="byname" onChange={selectChange}>
         <option disabled selected value>
           -- Order by --

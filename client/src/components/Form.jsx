@@ -149,126 +149,128 @@ const Form = () => {
   }
 
   return (
-    <div className="box">
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <span className="title">Create your game!</span>
-        <div className="input-container">
-          <input
-            value={input.name}
-            type="text"
-            required
-            name="name"
-            onChange={handleChange}
-            autoComplete="off"
-            placeholder="Name"
-          />
-          {errors.name && <p>{errors.name}</p>}
-        </div>
+    <div className="form-full">
+      <div className="box">
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <span className="title">Create your game!</span>
+          <div className="input-container">
+            <input
+              value={input.name}
+              type="text"
+              required
+              name="name"
+              onChange={handleChange}
+              autoComplete="off"
+              placeholder="Name"
+            />
+            {errors.name && <p className="errors">{errors.name}</p>}
+          </div>
 
-        <div className="input-container">
-          <input
-            type="text"
-            name="image"
-            required
-            value={input.image}
-            onChange={handleChange}
-            placeholder="Image URL:"
-          />
-          {errors.image && <p>{errors.image}</p>}
-        </div>
+          <div className="input-container">
+            <input
+              type="text"
+              name="image"
+              required
+              value={input.image}
+              onChange={handleChange}
+              placeholder="Image URL:"
+            />
+            {errors.image && <p className="errors">{errors.image}</p>}
+          </div>
 
-        <div className="input-container">
-          <input type="date" name="released" onChange={handleChange} />
-          {errors.released && <p> {errors.released} </p>}
-        </div>
+          <div className="input-container">
+            <input type="date" name="released" onChange={handleChange} />
+            {errors.released && <p className="errors"> {errors.released} </p>}
+          </div>
 
-        <div className="input-container">
-          <input
-            type="number"
-            required
-            name="rating"
-            onChange={handleChange}
-            value={input.rating}
-            placeholder="Rating"
-          />
-          {errors.rating && <p>{errors.rating}</p>}
-        </div>
+          <div className="input-container">
+            <input
+              type="number"
+              required
+              name="rating"
+              onChange={handleChange}
+              value={input.rating}
+              placeholder="Rating"
+            />
+            {errors.rating && <p className="errors">{errors.rating}</p>}
+          </div>
 
-        <div className="input-container">
-          <select name="genres" onChange={(e) => handleGenres(e)}>
-            <option disabled selected>
-              Genres
-            </option>
-            {genres.map((gen) => {
-              return (
-                <option key={gen.id} value={gen.name}>
-                  {gen.name}
-                </option>
-              );
-            })}
-          </select>
-          {input.genres.map((gen) => (
-            <p>
-              <span key={gen.id} className="op-title">
-                {gen}
-              </span>
-              <span>
-                <button onClick={() => handleDeleteGenres(gen)} value={gen}>
-                  x
-                </button>
-              </span>
-            </p>
-          ))}
-        </div>
+          <div className="input-container">
+            <select name="genres" onChange={(e) => handleGenres(e)}>
+              <option disabled selected>
+                Genres
+              </option>
+              {genres.map((gen) => {
+                return (
+                  <option key={gen.id} value={gen.name}>
+                    {gen.name}
+                  </option>
+                );
+              })}
+            </select>
+            {input.genres.map((gen) => (
+              <p className="option-selected">
+                <span key={gen.id} className="op-title">
+                  {gen}
+                </span>
+                <span>
+                  <button onClick={() => handleDeleteGenres(gen)} value={gen}>
+                    x
+                  </button>
+                </span>
+              </p>
+            ))}
+          </div>
 
-        <div className="input-container">
-          <select
-            name="platforms"
-            id="platforms"
-            onChange={(e) => handlePlat(e)}
-          >
-            <option disabled selected>
-              Platforms
-            </option>
-            {platforms.map((plat) => {
-              return (
-                <option value={plat} key={plat}>
-                  {plat}
-                </option>
-              );
-            })}
-          </select>
-          {input.platforms.map((pl) => (
-            <p>
-              <span className="op-title">{pl}</span>
-              <span>
-                <button onClick={() => handleDeletePlatform(pl)}>x</button>
-              </span>
-            </p>
-          ))}
-        </div>
+          <div className="input-container">
+            <select
+              name="platforms"
+              id="platforms"
+              onChange={(e) => handlePlat(e)}
+            >
+              <option disabled selected>
+                Platforms
+              </option>
+              {platforms.map((plat) => {
+                return (
+                  <option value={plat} key={plat}>
+                    {plat}
+                  </option>
+                );
+              })}
+            </select>
+            {input.platforms.map((pl) => (
+              <p className="option-selected">
+                <span className="op-title">{pl}</span>
+                <span>
+                  <button onClick={() => handleDeletePlatform(pl)}>x</button>
+                </span>
+              </p>
+            ))}
+          </div>
 
-        <div className="input-container">
-          <textarea
-            placeholder="Description..."
-            required
-            name="description"
-            value={input.description}
-            onChange={handleChange}
-            cols="30"
-            rows="10"
-          ></textarea>
-        </div>
+          <div className="input-container">
+            <textarea
+              placeholder="Description..."
+              required
+              name="description"
+              value={input.description}
+              onChange={handleChange}
+              cols="30"
+              rows="10"
+            ></textarea>
+          </div>
 
-        <div>
-          <button className="btn" type="submit">
-            Create Game
-          </button>
-          <button className="btn" onClick={() => navigate(-1)}>
-            Back
-          </button>
-        </div>
-      </form>
+          <div>
+            <button className="btn" type="submit">
+              Create Game
+            </button>
+            <button className="btn" onClick={() => navigate(-1)}>
+              Back
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

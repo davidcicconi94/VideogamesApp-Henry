@@ -77,7 +77,6 @@ const getPlatforms = async (req, res) => {
       vg.platforms.map((plat) => {
         if (!platforms.includes(plat)) {
           platforms.push(plat);
-          console.log(platforms);
         }
       })
     );

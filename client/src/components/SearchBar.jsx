@@ -3,16 +3,11 @@ import { useDispatch } from "react-redux";
 import { getByName, getvideogames } from "../redux/actions/actions";
 import { Link } from "react-router-dom";
 import "../styles/NavBar.style.css";
-import Loading from "./Loading";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  if (loading) {
-    <Loading />;
-  }
   const onChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
@@ -20,7 +15,7 @@ const SearchBar = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(getByName(input)).then(() => setLoading(true));
+    dispatch(getByName(input));
     setInput("");
   };
 

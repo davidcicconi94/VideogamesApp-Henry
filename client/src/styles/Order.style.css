@@ -6,6 +6,8 @@
 select {
     padding: 8px;
     margin-left: 15px;
+    background-color: #555;
+    color: white;
 }
 
 select option{ 
@@ -18,3 +20,4 @@ select option{
     color: black;
     margin-top: 20px;
   }
+

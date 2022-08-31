@@ -25,7 +25,7 @@ const Details = () => {
   };
 
   if (loading) {
-    <Loading />;
+    return <Loading />;
   }
 
   return (
@@ -42,7 +42,7 @@ const Details = () => {
       <p className="description">
         {videogame.description?.replace(regex, "").replace("&#39", "")}
       </p>
-      <h3>🎮 {videogame.platforms?.join(" - ")} </h3>
+      <h3 style={{ color: "gold" }}>🎮 {videogame.platforms?.join(" - ")} </h3>
       <button className="button-2" onClick={handleClick}>
         Back
       </button>

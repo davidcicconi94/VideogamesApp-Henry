@@ -79,4 +79,27 @@
 }
 
 
+.logout {
+  padding: 0.6em 1em;
+  border: 1px solid #f5ede6;
+  margin-right: 10px;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: rgb(138, 9, 9);
+  cursor: pointer;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  margin-left: 10px;
+  margin-top: 10px;
+  float: right;
+  
+}
+
+.logout:hover {
+  background: rgb(90, 4, 4);
+
+}
+
 

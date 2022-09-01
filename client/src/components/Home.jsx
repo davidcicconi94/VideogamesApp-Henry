@@ -19,6 +19,7 @@ const Home = () => {
   const pagination = (pageNumb) => {
     setCurrentPage(pageNumb);
   };
+
   return (
     <div>
       <Navbar />

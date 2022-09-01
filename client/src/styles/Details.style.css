@@ -67,6 +67,8 @@
 
   .img-details {
     border: 2px solid white;
+    object-fit: cover;
+
   }
   
   @media (max-width: 768px) {
@@ -76,4 +78,5 @@
     .img-details {
       width: 100%;
     }
+    
   }

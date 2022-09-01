@@ -39,6 +39,10 @@ export const getByName = (name) => {
       });
     } catch (error) {
       console.error(error);
+      return dispatch({
+        type: GET_BY_NAME,
+        payload: [],
+      });
     }
   };
 };

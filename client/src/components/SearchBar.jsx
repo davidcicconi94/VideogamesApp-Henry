@@ -15,8 +15,13 @@ const SearchBar = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(getByName(input));
-    setInput("");
+
+    if (input) {
+      dispatch(getByName(input));
+      setInput("");
+    } else {
+      alert("No games");
+    }
   };
 
   const handleRefresh = (e) => {

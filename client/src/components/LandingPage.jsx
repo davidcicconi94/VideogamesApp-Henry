@@ -10,42 +10,40 @@ const LandingPage = () => {
     <div className="full">
       <div className="all">
         <div className="content">
-          <h1 className="title">Videogames APP - By David Cicconi</h1>
-          <Link to="/home">
-            <button className="btn">
-              <span> START </span>
-            </button>
-          </Link>
+          <h1 className="my-title">VIDEOGAMES APP - by David Cicconi</h1>
+          <div className="links">
+            <div className="icon">
+              <a
+                href="https://github.com/davidcicconi94"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={github} alt="github" />
+              </a>
+            </div>
+            <div className="icon">
+              <a
+                href="https://www.linkedin.com/in/david-cicconi-dev/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={linkedin} alt="linkedin" />
+              </a>
+            </div>
+            <div className="icon">
+              <a
+                href="mailto:david.cicconi94@gmail.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={gmail} alt="gmail" />
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="links">
-        <div className="icon">
-          <a
-            href="https://github.com/davidcicconi94"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={github} alt="github" />
-          </a>
-        </div>
-        <div className="icon">
-          <a
-            href="https://www.linkedin.com/in/david-cicconi-dev/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={linkedin} alt="linkedin" />
-          </a>
-        </div>
-        <div className="icon">
-          <a
-            href="mailto:david.cicconi94@gmail.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={gmail} alt="gmail" />
-          </a>
-        </div>
+        <Link to="/home">
+          <button className="btn-landing">START</button>
+        </Link>
       </div>
     </div>
   );

@@ -1,7 +1,10 @@
-/* CSS */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;500&display=swap');
 .details-all {
   color: #fff;
   padding: 90px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em;
 }
 
 .released {
@@ -10,11 +13,11 @@
 
 .description {
   padding: 50px;
-  margin: 0 10%
+  margin: 0 10%;
+  
 }
 
 .button-2 {
-    appearance: button;
     background-color: #000;
     background-image: none;
     border: 1px solid #000;
@@ -24,7 +27,7 @@
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 400;
     line-height: 20px;
     margin: 0 5px 10px 0;
@@ -38,6 +41,7 @@
     vertical-align: middle;
     white-space: nowrap;
     margin-top: 20px;
+    font-family: 'Oswald', sans-serif
   }
   
   .button-2:focus {
@@ -60,9 +64,19 @@
     box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
     transform: translate(2px, 2px);
   }
+
+  .img-details {
+    border: 2px solid white;
+    object-fit: cover;
+
+  }
   
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     .button-2 {
       padding: 12px 50px;
     }
+    .img-details {
+      width: 100%;
+    }
+    
   }

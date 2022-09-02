@@ -3,10 +3,9 @@ import "../styles/Pagination.style.css";
 
 const Pagination = ({ videogames, pagination, gamesPerPage }) => {
   const pageNumber = [];
-  console.log(pageNumber);
 
-  for (let i = 0; i <= Math.ceil(videogames / gamesPerPage); i++) {
-    pageNumber.push(i + 1);
+  for (let i = 1; i <= Math.ceil(videogames / gamesPerPage); i++) {
+    pageNumber.push(i);
   }
 
   return (

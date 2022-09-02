@@ -4,6 +4,7 @@
     margin: 0;
     background-image: url('https://i.pinimg.com/564x/26/cf/3c/26cf3c80b7b5923f89fba8fe140dd660.jpg');
     min-height: 100vh;
+
   }
 
   .card {
@@ -18,13 +19,14 @@
     margin: 30px;
   }
 
-  .imgVg {
-    height: 70%;
-  }
+  img {
+        object-fit: cover;
 
-.title-card {
-  color: #fff;
-  padding: 7px;
+  }
+  
+  .title-card {
+    color: #fff;
+    padding: 7px;
   font-weight: bold;
 }
 

@@ -69,7 +69,7 @@ const infoTotal = async () => {
 
 // REQUEST POR QUERY A LA API
 const apiByName = async (name) => {
-  let url = `https://api.rawg.io/api/games?search=${name}&key=bc1bb0ae62664232a0e926209f30dd87`;
+  let url = `https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`;
 
   try {
     const dataSearch = await axios.get(url); // {... , data: { results: ...}} llega Objeto -> data {} -> results

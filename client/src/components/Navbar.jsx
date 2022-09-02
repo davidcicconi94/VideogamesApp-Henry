@@ -1,19 +1,16 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import SearchBar from "./SearchBar";
 import imagen from "../images/videogame.png";
 import "../styles/NavBar.style.css";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-
   return (
     <div>
+      <NavLink to={"/"}>
+        <button className="logout">Game Over</button>
+      </NavLink>
       <div className="img">
         <img src={imagen} alt="mario" height="200px" />
-      </div>
-      <div className="search-bar">
-        <SearchBar />
       </div>
     </div>
   );

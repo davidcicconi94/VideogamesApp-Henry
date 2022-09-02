@@ -3,16 +3,11 @@ import { useDispatch } from "react-redux";
 import { getByName, getvideogames } from "../redux/actions/actions";
 import { Link } from "react-router-dom";
 import "../styles/NavBar.style.css";
-import Loading from "./Loading";
 
-const SearchBar = () => {
+const SearchBar = ({ setCurrentPage }) => {
   const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  if (loading) {
-    <Loading />;
-  }
   const onChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
@@ -20,8 +15,13 @@ const SearchBar = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(getByName(input)).then(() => setLoading(true));
-    setInput("");
+
+    if (input) {
+      dispatch(getByName(input)).then(() => setCurrentPage(1));
+      setInput("");
+    } else {
+      alert("No games");
+    }
   };
 
   const handleRefresh = (e) => {
@@ -32,30 +32,30 @@ const SearchBar = () => {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <div>
+        <div className="right-buttons">
           <input
             type="text"
-            class="form__field"
             placeholder="Videogame..."
             onChange={onChange}
             value={input}
             name="name"
+            autoComplete="off"
           />
           <button type="submit" className="button">
             Search
           </button>
-        </div>
-        <div className="create-refresh-buttons">
-          <span>
-            <Link to="/create">
-              <button className="button">Create Game</button>
-            </Link>
-          </span>
-          <span>
-            <button onClick={handleRefresh} className="button">
-              Refresh
-            </button>
-          </span>
+          <div className="span">
+            <span>
+              <Link to="/create">
+                <button className="button">Create Game</button>
+              </Link>
+            </span>
+            <span>
+              <button onClick={handleRefresh} className="button">
+                Refresh
+              </button>
+            </span>
+          </div>
         </div>
       </form>
     </div>

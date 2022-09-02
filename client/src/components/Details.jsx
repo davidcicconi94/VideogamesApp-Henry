@@ -25,19 +25,26 @@ const Details = () => {
   };
 
   if (loading) {
-    <Loading />;
+    return <Loading />;
   }
 
   return (
     <div className="details-all">
       <h2> {videogame.name} </h2>
       <p className="released">📅 {videogame.released} </p>
-      <img src={videogame.image} alt="" height="400px" />
+      <img
+        className="img-details"
+        src={videogame.image}
+        alt={videogame.name}
+        height="400px"
+        width="700px"
+      />
       <p className="description">
-        {" "}
-        {videogame.description?.replace(regex, "").replace("&#39", "")}{" "}
+        {videogame.description?.replace(regex, "").replace("&#39", "")}
       </p>
-      <h3>🎮 {videogame.platforms?.join(" - ")} </h3>
+      <h3 style={{ color: "#ceb942" }}>
+        🎮 {videogame.platforms?.join(" - ")}{" "}
+      </h3>
       <button className="button-2" onClick={handleClick}>
         Back
       </button>

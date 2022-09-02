@@ -3,7 +3,37 @@ const axios = require("axios");
 require("dotenv").config();
 const { Videogame, Genre } = require("../db.js");
 const { API_KEY } = process.env;
-const { totalData, videogame, apiData } = require("../controllers/index.js");
+const {
+  totalData,
+  videogame,
+  apiData,
+  infoTotal,
+  apiByName,
+  dbData,
+} = require("../controllers/index.js");
+
+const getAllGames = async (req, res, next) => {
+  const { name } = req.query;
+  let videogames = await infoTotal();
+  if (name) {
+    try {
+      const foundGamesAPI = await apiByName(name);
+      const gamesByNameDB = await dbData();
+      let foundGamesDB = gamesByNameDB.filter((el) =>
+        el.name.toLowerCase().includes(name.toLowerCase())
+      );
+      let allResults = foundGamesDB.concat(foundGamesAPI);
+      allResults.length
+        ? res.status(200).send(allResults.slice(0, 15))
+        : res.status(400).send("No hay un videojuego con dicho nombre");
+    } catch (err) {
+      next(err);
+    }
+  } else {
+    res.send(videogames);
+    return;
+  }
+};
 
 const createGame = async (req, res) => {
   try {
@@ -30,7 +60,7 @@ const createGame = async (req, res) => {
 
     res.send(newGame);
   } catch (error) {
-    console.log(error);
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -52,7 +82,7 @@ const getGenres = async (req, res) => {
     const arrGenr = response.data.results;
 
     const apiGenres = arrGenr.map((el) => el.name); // ['action' , 'indie' , etc]
-    console.log("Estos son los Genres de la API:", apiGenres);
+    // console.log("Estos son los Genres de la API:", apiGenres);
 
     // Guardo los genres que traje de la API a la base de datos
     apiGenres.map((el) =>
@@ -77,7 +107,6 @@ const getPlatforms = async (req, res) => {
       vg.platforms.map((plat) => {
         if (!platforms.includes(plat)) {
           platforms.push(plat);
-          console.log(platforms);
         }
       })
     );
@@ -88,4 +117,10 @@ const getPlatforms = async (req, res) => {
   } catch (error) {}
 };
 
-module.exports = { createGame, gamesById, getGenres, getPlatforms };
+module.exports = {
+  createGame,
+  gamesById,
+  getGenres,
+  getPlatforms,
+  getAllGames,
+};

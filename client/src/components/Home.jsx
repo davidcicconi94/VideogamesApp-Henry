@@ -23,7 +23,10 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <Order />
+      <div className="search-bar">
+        <SearchBar setCurrentPage={setCurrentPage} />
+      </div>
+      <Order setCurrentPage={setCurrentPage} />
       <Pagination
         pagination={pagination}
         videogames={videogames.length}

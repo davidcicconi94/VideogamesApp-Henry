@@ -4,7 +4,7 @@ import { getByName, getvideogames } from "../redux/actions/actions";
 import { Link } from "react-router-dom";
 import "../styles/NavBar.style.css";
 
-const SearchBar = () => {
+const SearchBar = ({ setCurrentPage }) => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ const SearchBar = () => {
     e.preventDefault();
 
     if (input) {
-      dispatch(getByName(input));
+      dispatch(getByName(input)).then(() => setCurrentPage(1));
       setInput("");
     } else {
       alert("No games");

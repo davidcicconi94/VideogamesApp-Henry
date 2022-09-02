@@ -11,3 +11,8 @@
 .pagination {
     padding: 20px;
 }
+
+.pagination span button:active{
+    background-color: #584c07;
+    border: 1px solid white;
+}

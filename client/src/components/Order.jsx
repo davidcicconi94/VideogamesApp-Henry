@@ -15,9 +15,8 @@ import {
 } from "../redux/actions/actions";
 import "../styles/Order.style.css";
 
-const Order = () => {
+const Order = ({ setCurrentPage }) => {
   const genres = useSelector((state) => state.genres);
-  const allGames = useSelector((state) => state.videogames);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,6 +33,7 @@ const Order = () => {
       dispatch(getvideogames());
     } else {
       dispatch(filterByGenre(e.target.value));
+      setCurrentPage(1);
     }
   }
 
@@ -44,6 +44,7 @@ const Order = () => {
       dispatch(getvideogames());
     } else {
       dispatch(filterByOrigin(e.target.value));
+      setCurrentPage(1);
     }
   }
 

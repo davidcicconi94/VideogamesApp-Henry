@@ -142,7 +142,6 @@ const Form = () => {
           genres: [],
           platforms: [],
         });
-        alert("Congratulations, the game was successfully created.");
       }
       navigate("/home");
     }

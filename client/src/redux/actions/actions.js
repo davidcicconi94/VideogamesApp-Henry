@@ -120,12 +120,14 @@ export const createGame = (newGame) => {
         newGame
       );
 
+      alert("Congratulations, the game was successfully created.");
+
       return dispatch({
         type: CREATE_GAME,
         payload: data,
       });
     } catch (error) {
-      console.error(error);
+      alert("Juego no creado, Error 400");
     }
   };
 };

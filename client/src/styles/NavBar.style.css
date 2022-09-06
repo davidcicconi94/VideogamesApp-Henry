@@ -1,0 +1,105 @@
+.search-bar {
+    padding: 10px;
+}
+
+ input{ 
+  border:0;
+  border-bottom:1px solid rgb(255, 255, 255);  
+  background:transparent;
+  width:20%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.create-refresh-buttons {
+  margin-top: 20px;
+}
+
+
+.span {
+  /* border: 1px solid red; */
+  margin-top: 10px;
+}
+
+
+.button {
+  padding: 0.6em 1em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.button:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ffa600,
+    #f5ede6,
+    #644407,
+    #ffa600
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+
+
+.button:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+
+.logout {
+  padding: 0.6em 1em;
+  border: 1px solid #f5ede6;
+  margin-right: 10px;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: rgb(138, 9, 9);
+  cursor: pointer;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  margin-left: 10px;
+  margin-top: 10px;
+  float: right;
+  
+}
+
+.logout:hover {
+  background: rgb(90, 4, 4);
+
+}
+
+

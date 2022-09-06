@@ -1,0 +1,63 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.all {
+    width: 100%;
+    height: 100%;
+    background: url('../images/game_background.jpg') no-repeat 50% 50% ;
+    position: fixed;
+    background-size: cover;
+    display: table;
+    margin: 0;
+    top: 0;
+}
+
+
+
+.links {
+    text-align: center;
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+   justify-content: center;
+  }
+
+  .icon img{
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+}
+
+.btn-landing {
+    background-color: #008b15;
+   color: white;
+   font-weight: bold;
+   padding: 0.9em 1em;
+   border-radius: 10px;
+   margin-top: 50px;
+   border: 1px solid white;
+}
+
+.btn-landing:hover {
+    background-color: #026b12;
+    cursor: pointer;
+}
+
+
+
+@media (max-height: 768px) {
+    .btn-landing {
+        margin-top: 20em;
+    }
+  }
+
+  @media (max-height: 468px) {
+    .btn-landing {
+        margin-top: 11em;
+    }
+}

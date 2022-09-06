@@ -1,16 +1,22 @@
 const { Router } = require("express");
-const { apiData } = require("../controllers");
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
+const {
+  createGame,
+  gamesById,
+  getGenres,
+  getPlatforms,
+  getAllGames,
+} = require("../functions/index.js");
 
 const router = Router();
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
-router.get("/videogames", async (req, res) => {
-  // GUARDO LOS DATOS DE LO QUE HAY EN TODA LA API
-  const apiGames = await apiData();
-  res.send(apiGames);
-});
+router.get("/videogames", getAllGames);
+
+router.get("/videogames/:id", gamesById);
+
+router.post("/videogames", createGame);
+
+router.get("/genres", getGenres);
+
+router.get("/platforms", getPlatforms);
 
 module.exports = router;
